@@ -1,0 +1,10 @@
+{
+  "db" : {
+    "url": "mongodb://localhost:27017",
+    "user": "admin",
+    "password": "password"
+  },
+  "log": {
+    "logToFile": false
+  }
+}

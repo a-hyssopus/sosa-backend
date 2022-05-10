@@ -1,14 +1,15 @@
 const mongoose = require("mongoose");
-const logger = require('morgan');
+const config = require("config");
+const logger = require("./log-config");
 
-//TODO from env
-mongoose.connect('mongodb://localhost:27017', {user: "admin", pass:"password", dbName:"sosa"});
+mongoose.connect(config.get("db.url"), {user: config.get("db.user"), pass: config.get("db.password"), dbName: "sosa"});
 
 const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Mongo connection error:'));
-db.once('open', function callback () {
-    //TODO replace with proper logging
-    console.log("Connected to Mongo!");
+db.on('error', function callback(err) {
+    logger.error('Failed to connect to Mongo!')
+});
+db.once('open', function callback() {
+    logger.info("Connected to Mongo!");
 });
 
 module.exports = mongoose;

@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "logs\\.d9cec422d5ec2e595535c6d28fbc8000ca0bf442-audit.json",
+    "files": [
+        {
+            "date": 1652048308114,
+            "name": "logs\\sosa-2022-05-09.log",
+            "hash": "b97e74f463992805ab548c49cff0223d"
+        }
+    ],
+    "hashType": "md5"
+}
