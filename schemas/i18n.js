@@ -8,6 +8,8 @@ const languageSchema = new Schema({
     "hero-message": String,
     "sterilization-text": String,
     "donate-button": String,
+    "save-button": String,
+    "delete-button": String,
 })
 
 const I18n = new Schema({

@@ -1,6 +1,5 @@
 const HttpClientError = require("../error/HttpClientError");
 
-
 function handleError(err, req, res, next) {
     if (err instanceof HttpClientError) {
         err.respondWithError(res)

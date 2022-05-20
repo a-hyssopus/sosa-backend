@@ -5,8 +5,8 @@ const EntityNotFoundError = require("../error/EntityNotFoundError");
 const BlogPostsModel = mongoose.model('BlogPosts', BlogPosts, 'blog-posts');
 
 // TODO Error Handling
-exports.getBlogPosts = function () {
-    return BlogPostsModel.find().lean();
+exports.getBlogPosts = function (language) {
+    return BlogPostsModel.find().select(['_id', 'date', 'image-src', language]).lean();
 }
 
 exports.saveBlogPost = async function (blogPost) {
@@ -14,8 +14,8 @@ exports.saveBlogPost = async function (blogPost) {
     return await blogPostToSave.save();
 }
 
-exports.getBlogPost = async function (id) {
-    let blogPostById = await BlogPostsModel.findById(id).lean();
+exports.getBlogPost = async function (id, language) {
+    let blogPostById = await BlogPostsModel.findById(id).select(['_id', 'date', 'image-src', language]).lean();
     if (!blogPostById) throw new EntityNotFoundError(`Blog: ${id} doesn't exist!`);
     return blogPostById;
 }
@@ -26,6 +26,7 @@ exports.updateBlogPost = async function (id, updatedFields) {
     return updatedBlogPost;
 }
 
-exports.deleteBlogPost = function (id) {
-    BlogPostsModel.findByIdAndDelete(id);
+exports.deleteBlogPost = async function (id) {
+    // await BlogPostsModel.findByIdAndDelete(id);
+    await BlogPostsModel.deleteOne({_id: id});
 }
