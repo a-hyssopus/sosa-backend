@@ -27,6 +27,5 @@ exports.updateBlogPost = async function (id, updatedFields) {
 }
 
 exports.deleteBlogPost = async function (id) {
-    // await BlogPostsModel.findByIdAndDelete(id);
     await BlogPostsModel.deleteOne({_id: id});
 }

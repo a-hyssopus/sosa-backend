@@ -6,16 +6,6 @@
     "auditLog": "logs\\.d9cec422d5ec2e595535c6d28fbc8000ca0bf442-audit.json",
     "files": [
         {
-            "date": 1652048308114,
-            "name": "logs\\sosa-2022-05-09.log",
-            "hash": "b97e74f463992805ab548c49cff0223d"
-        },
-        {
-            "date": 1652181347614,
-            "name": "logs\\sosa-2022-05-10.log",
-            "hash": "fa2f9ad82c4d63bf28360148239958b0"
-        },
-        {
             "date": 1652293952909,
             "name": "logs\\sosa-2022-05-11.log",
             "hash": "b2cd748b8a6ba1491bc22f49533907ed"
@@ -44,6 +34,26 @@
             "date": 1653041164435,
             "name": "logs\\sosa-2022-05-20.log",
             "hash": "a0f13a90761882084dc19d3b5035d81f"
+        },
+        {
+            "date": 1653250760203,
+            "name": "logs\\sosa-2022-05-22.log",
+            "hash": "e5f5aa861a2486f9b7c00951957395d4"
+        },
+        {
+            "date": 1653306551868,
+            "name": "logs\\sosa-2022-05-23.log",
+            "hash": "a4c892774dc14527d4e7db5ef35ce6af"
+        },
+        {
+            "date": 1653344821911,
+            "name": "logs\\sosa-2022-05-24.log",
+            "hash": "aefee938adeae7f0ca3764b0cfd53083"
+        },
+        {
+            "date": 1653473740806,
+            "name": "logs\\sosa-2022-05-25.log",
+            "hash": "6bcbd00a772ba789ee215fd276db9708"
         }
     ],
     "hashType": "md5"
