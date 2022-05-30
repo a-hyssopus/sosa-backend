@@ -25,8 +25,8 @@ router.get('/:id', async function (req, res, next) {
 });
 
 router.delete('/:id', authenticateToken, async function (req, res, next) {
-    deleteBlogPost(req.params.id);
-    res.status(204).send();
+    await deleteBlogPost(req.params.id);
+    res.sendStatus(204);
 })
 
 router.patch('/:id', authenticateToken, async function (req, res, next) {

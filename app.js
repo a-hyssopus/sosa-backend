@@ -12,6 +12,9 @@ const i18nRouter = require('./routes/i18n');
 const sharedUiElementsRouter = require('./routes/shared-ui-elements')
 const paymentDetailsRouter = require('./routes/payment-details')
 const usersRouter = require('./routes/users')
+// const faqRouter = require('./routes/faq')
+// const aboutRouter = require('./routes/about')
+// const reportsRouter = require('./routes/reports')
 const handleError = require("./routes/error-handler");
 
 const app = express();
@@ -26,7 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // TODO insert from env
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: 'http://localhost:3000',
+    credentials: true
 }));
 
 app.use((req, res, next) => {
@@ -58,6 +62,9 @@ app.use('/shared-ui-elements', sharedUiElementsRouter);
 app.use('/i18n', i18nRouter);
 app.use('/payment-details', paymentDetailsRouter);
 app.use('/blog-posts', blogPostsRouter);
+// app.use('/faq', faqRouter);
+// app.use('/reports', reportsRouter);
+// app.use('/about', aboutRouter);
 app.use('/users', usersRouter);
 app.use(handleError)
 

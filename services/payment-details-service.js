@@ -25,13 +25,21 @@ exports.saveCard = async function (cardInfoDTO) {
 exports.updateCardInfo = async function (cardInfoDTO) {
     const paymentDetails = await PaymentDetailsModel.findOne().lean();
     const bankIndex = paymentDetails.banks.map(bank => bank.name).indexOf(cardInfoDTO.bank.name);
-    if (bankIndex !== -1 && paymentDetails.banks[bankIndex].cards.length === 1) {
-         paymentDetails.banks.splice(bankIndex, 1);
-    }
-
-    let updatedCardsInfo = await PaymentDetailsModel.findOneAndUpdate({"card.count": cardInfoDTO.count}, {"banks.cards": cardInfoDTO});
-    if (!updatedCardsInfo) throw new EntityNotFoundError(`Card: ${cardInfoDTO.count} doesn't exist!`);
-    return updatedCardsInfo;
+    const cardToUpdateIndex = paymentDetails.banks[bankIndex].cards.map(card => card._id.toString()).indexOf(cardInfoDTO.id)
+    paymentDetails.banks[bankIndex].cards[cardToUpdateIndex] = cardInfoDTO;
+    return PaymentDetailsModel.updateOne(paymentDetails);
 }
 
+exports.deleteCardInfo = async function (cardInfoDTO) {
+    const paymentDetails = await PaymentDetailsModel.findOne().lean();
+    const bankIndex = paymentDetails.banks.map(bank => bank.name).indexOf(cardInfoDTO.name);
+    const cardToDeleteIndex = paymentDetails.banks[bankIndex].cards.map(card => card._id.toString()).indexOf(cardInfoDTO.id)
+    paymentDetails.banks[bankIndex].cards.splice(cardToDeleteIndex, 1);
+    return PaymentDetailsModel.updateOne(paymentDetails);
+}
 
+exports.savePaypal = async function (paypalInfoDTO) {
+    const paymentDetails = await PaymentDetailsModel.findOne().lean();
+    paymentDetails.PayPal.counts.push(paypalInfoDTO);
+    return PaymentDetailsModel.updateOne(paymentDetails);
+}
