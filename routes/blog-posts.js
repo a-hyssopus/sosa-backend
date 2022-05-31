@@ -24,13 +24,13 @@ router.get('/:id', async function (req, res, next) {
     res.send(JSON.stringify(blogPost));
 });
 
+router.patch('/:id', authenticateToken, async function (req, res, next) {
+    res.send(JSON.stringify(await updateBlogPost(req.params.id, req.body)))
+});
+
 router.delete('/:id', authenticateToken, async function (req, res, next) {
     await deleteBlogPost(req.params.id);
     res.sendStatus(204);
 })
-
-router.patch('/:id', authenticateToken, async function (req, res, next) {
-    res.send(JSON.stringify(await updateBlogPost(req.params.id, req.body)))
-});
 
 module.exports = router;
