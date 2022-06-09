@@ -1,5 +1,5 @@
 const mongoose = require("../config/mongo-config");
-const I18n = require("../schemas/i18n");
+const I18n = require("../schemas/i18n-schema");
 const HttpClientError = require("../error/HttpClientError");
 
 const i18nUIElementsModel = mongoose.model("I18nElements", I18n, "i18n")

@@ -1,5 +1,5 @@
 const mongoose = require("../config/mongo-config");
-const BlogPosts = require("../schemas/blog-post");
+const BlogPosts = require("../schemas/blog-post-schema");
 const EntityNotFoundError = require("../error/EntityNotFoundError");
 
 const BlogPostsModel = mongoose.model('BlogPosts', BlogPosts, 'blog-posts');

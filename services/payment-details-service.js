@@ -1,5 +1,5 @@
 const mongoose = require("../config/mongo-config");
-const {PaymentDetailsSchema, CardSchema, BanksSchema} = require("../schemas/payment-details");
+const {PaymentDetailsSchema} = require("../schemas/payment-details-schema");
 const EntityNotFoundError = require("../error/EntityNotFoundError");
 
 const PaymentDetailsModel = mongoose.model('PaymentDetails', PaymentDetailsSchema, 'payment-details');
@@ -9,6 +9,7 @@ exports.getPaymentDetails = function () {
 }
 
 exports.saveCard = async function (cardInfoDTO) {
+    // TODO check whether can be implemented with .filter() instead of map + indexOf
     const paymentDetails = await PaymentDetailsModel.findOne().lean();
     const bankIndex = paymentDetails.banks.map(bank => bank.name).indexOf(cardInfoDTO.bank.name);
     if (bankIndex === -1) {
@@ -30,6 +31,8 @@ exports.updateCardInfo = async function (cardInfoDTO) {
     return PaymentDetailsModel.updateOne(paymentDetails);
 }
 
+// TODO update bank info
+
 exports.deleteCardInfo = async function (cardInfoDTO) {
     const paymentDetails = await PaymentDetailsModel.findOne().lean();
     const bankIndex = paymentDetails.banks.map(bank => bank.name).indexOf(cardInfoDTO.name);
@@ -43,13 +46,13 @@ exports.deleteCardInfo = async function (cardInfoDTO) {
 }
 
 exports.savePaypal = async function (paypalInfoDTO) {
-    const paymentDetails = await PaymentDetailsModel.findOne().lean();
+    const paymentDetails = await PaymentDetailsModel.findOne({}).lean();
     paymentDetails.PayPal.counts.push(paypalInfoDTO);
     return PaymentDetailsModel.updateOne(paymentDetails);
 }
 
 exports.updatePaypal = async function (id, paypalInfoDTO) {
-    const paymentDetails = await PaymentDetailsModel.findOne().lean();
+    const paymentDetails = await PaymentDetailsModel.findOne({}).lean();
     const paypalToUpdateIndex = paymentDetails.PayPal.counts.map(count => count._id.toString()).indexOf(id)
     paymentDetails.PayPal.counts[paypalToUpdateIndex] = paypalInfoDTO;
     return PaymentDetailsModel.updateOne(paymentDetails);

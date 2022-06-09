@@ -11,18 +11,18 @@ const CardSchema = new Schema({
 
 const BanksSchema = new Schema({
     "name": {type: String, required: true},
-    "primary-color": {type: String, required: true},
-    "secondary-color": {type: String, required: true},
-    "text-color": {type: String, required: true},
+    "primary-color": {type: Object},
+    "secondary-color": {type: Object},
+    "text-color": {type: Object},
     link: {type: String},
     "cards": [CardSchema],
     _id: false
 })
 
 const PayPalSchema = new Schema({
-    "primary-color": {type: String, required: true},
-    "secondary-color": {type: String, required: true},
-    "text-color": {type: String, required: true},
+    "primary-color": {type: Object},
+    "secondary-color": {type: Object},
+    "text-color": {type: Object},
     link: {type: String},
     "counts": {
         type:

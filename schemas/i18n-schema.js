@@ -12,10 +12,10 @@ const languageSchema = new Schema({
     "delete-button": String,
 })
 
-const I18n = new Schema({
+const I18nSchema = new Schema({
     "en": languageSchema,
     "ro": languageSchema,
     "ru": languageSchema
 });
 
-module.exports = I18n;
+module.exports = I18nSchema;
