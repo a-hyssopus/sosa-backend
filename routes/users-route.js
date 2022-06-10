@@ -30,6 +30,7 @@ router.post("/login", async function (req, res, next) {
         const isLoggedInCookieOptions = {
             httpOnly: false,
             expires: dayjs().add(7, "days").toDate(),
+            path: '/'
         };
 
         if (process.env.NODE_ENV !== "dev") {
