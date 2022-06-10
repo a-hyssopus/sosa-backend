@@ -27,19 +27,6 @@ router.post("/login", async function (req, res, next) {
 
         res.cookie("jwtToken", token, cookiesOptions);
 
-        const isLoggedInCookieOptions = {
-            httpOnly: false,
-            expires: dayjs().add(7, "days").toDate(),
-            path: '/'
-        };
-
-        if (process.env.NODE_ENV !== "dev") {
-            isLoggedInCookieOptions.sameSite = 'None';
-            isLoggedInCookieOptions.secure = true
-        }
-
-        res.cookie("isLoggedIn", true, isLoggedInCookieOptions);
-
         res.status(200).send('Logged in');
     } else {
         res.status(401).send('Wrong login or password!');
@@ -51,15 +38,13 @@ router.post("/logout", async function (req, res, next) {
         httpOnly: true,
         path: '/'
     };
+
     if (process.env.NODE_ENV !== "dev") {
         cookiesOptions.sameSite = 'None';
         cookiesOptions.secure = true
     }
 
     res.clearCookie('jwtToken', cookiesOptions);
-    res.clearCookie('isLoggedIn', {
-        httpOnly: false,
-    });
 
     res.status(200).send('Logged out');
 });
