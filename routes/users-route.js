@@ -30,6 +30,7 @@ router.post("/login", async function (req, res, next) {
 
         res.cookie("isLoggedIn", true, {
             httpOnly: false,
+            sameSite: 'none',
             expires: dayjs().add(7, "days").toDate(),
         });
 
