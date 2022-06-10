@@ -17,11 +17,12 @@ router.post("/login", async function (req, res, next) {
         const cookiesOptions = {
             httpOnly: true,
             expires: dayjs().add(7, "days").toDate(),
+            sameSite: 'none',
             path: '/'
         };
 
         if (process.env.NODE_ENV !== "dev") {
-            cookiesOptions.sameSite = 'None';
+            cookiesOptions.sameSite = 'none';
             cookiesOptions.secure = true
         }
 
@@ -29,6 +30,7 @@ router.post("/login", async function (req, res, next) {
 
         res.cookie("isLoggedIn", true, {
             httpOnly: false,
+            sameSite: 'none',
             expires: dayjs().add(7, "days").toDate(),
         });
 
@@ -43,6 +45,7 @@ router.post("/logout", async function (req, res, next) {
         httpOnly: true,
         path: '/'
     };
+
     if (process.env.NODE_ENV !== "dev") {
         cookiesOptions.sameSite = 'None';
         cookiesOptions.secure = true

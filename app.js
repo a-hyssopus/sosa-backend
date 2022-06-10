@@ -25,16 +25,12 @@ const app = express();
 app.use(morgan('combined'));
 app.use(compression());
 app.use(helmet())
-// app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
-// app.use(express.urlencoded({ extended: false }));
-//TODO insert from env
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit: 50000}));
 
-// TODO insert from env
 app.use(cors({
     origin: config.get("cors.origin"),
     credentials: true
