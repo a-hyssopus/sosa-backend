@@ -27,11 +27,17 @@ router.post("/login", async function (req, res, next) {
 
         res.cookie("jwtToken", token, cookiesOptions);
 
-        res.cookie("isLoggedIn", true, {
+        const isLoggedInCookieOptions = {
             httpOnly: false,
-            sameSite: 'None',
             expires: dayjs().add(7, "days").toDate(),
-        });
+        };
+
+        if (process.env.NODE_ENV !== "dev") {
+            isLoggedInCookieOptions.sameSite = 'None';
+            isLoggedInCookieOptions.secure = true
+        }
+
+        res.cookie("isLoggedIn", true, isLoggedInCookieOptions);
 
         res.status(200).send('Logged in');
     } else {
