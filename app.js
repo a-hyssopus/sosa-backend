@@ -18,6 +18,7 @@ const aboutRouter = require('./routes/about-us-route')
 const handleError = require("./routes/error-handler-route");
 const compression = require("compression");
 const helmet = require("helmet");
+const config = require("config");
 
 const app = express();
 
@@ -35,7 +36,7 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit: 50
 
 // TODO insert from env
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: config.get("cors.origin"),
     credentials: true
 }));
 
