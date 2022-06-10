@@ -13,9 +13,6 @@ exports.signup = async function (user) {
 }
 
 exports.login = async function (user) {
-    console.log(user)
-    console.log(user.password)
-    console.log(user['password'])
     const persistedUser = await UsersModel.findOne({username: user.username});
     if (persistedUser) {
         return await bcrypt.compare(user.password, persistedUser.password);

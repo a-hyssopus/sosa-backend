@@ -48,10 +48,10 @@ router.post("/logout", async function (req, res, next) {
         cookiesOptions.secure = true
     }
 
-    res.clearCookie('jwtToken', cookiesOptions).send();
+    res.clearCookie('jwtToken', cookiesOptions);
     res.clearCookie('isLoggedIn', {
         httpOnly: false,
-    }).send();
+    });
 
     res.status(200).send('Logged out');
 });

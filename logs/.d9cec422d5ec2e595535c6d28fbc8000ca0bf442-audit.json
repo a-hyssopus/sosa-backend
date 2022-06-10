@@ -69,6 +69,11 @@
             "date": 1654775135683,
             "name": "logs\\sosa-2022-06-09.log",
             "hash": "2ea825a0a075bc8db1090ee812b51d82"
+        },
+        {
+            "date": 1654814897015,
+            "name": "logs\\sosa-2022-06-10.log",
+            "hash": "be89d46d8cc335c67dbec8a0896d4275"
         }
     ],
     "hashType": "md5"

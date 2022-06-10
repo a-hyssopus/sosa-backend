@@ -1,8 +1,8 @@
 {
   "db" : {
-    "url": "mongodb://localhost:27017",
+    "url": "mongodb+srv://admin:7pbWwTKfVulJ1O8c@sosa-mongo.vuqlzwl.mongodb.net/?retryWrites=true&w=majority",
     "user": "admin",
-    "password": "password"
+    "password": "7pbWwTKfVulJ1O8c"
   },
   "log": {
     "logToFile": true
