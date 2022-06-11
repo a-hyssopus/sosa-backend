@@ -6,16 +6,6 @@
     "auditLog": "logs\\.d9cec422d5ec2e595535c6d28fbc8000ca0bf442-audit.json",
     "files": [
         {
-            "date": 1653641195852,
-            "name": "logs\\sosa-2022-05-27.log",
-            "hash": "f4ec43623b1d8078ae828bcc2392ce33"
-        },
-        {
-            "date": 1653754765295,
-            "name": "logs\\sosa-2022-05-28.log",
-            "hash": "92a110e823c80371a16468cfd3aa8a96"
-        },
-        {
             "date": 1653845171541,
             "name": "logs\\sosa-2022-05-29.log",
             "hash": "6ac4f12342b9a9873e57ef8c5f41b1bb"
@@ -74,6 +64,11 @@
             "date": 1654814897015,
             "name": "logs\\sosa-2022-06-10.log",
             "hash": "be89d46d8cc335c67dbec8a0896d4275"
+        },
+        {
+            "date": 1654976996019,
+            "name": "logs\\sosa-2022-06-11.log",
+            "hash": "af75f896009e543d955a8b5e8bdf04bf"
         }
     ],
     "hashType": "md5"
