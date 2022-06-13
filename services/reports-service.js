@@ -13,8 +13,8 @@ exports.saveReport = async function (reportDTO) {
     return await reportToSave.save();
 }
 
-exports.getReport = async function (id, language) {
-    let report = await ReportModel.findById(id).select(['_id', 'images', 'sterilized', 'period', 'money',language]).lean();
+exports.getReport = async function (id) {
+    let report = await ReportModel.findById(id).lean();
     if (!report) throw new EntityNotFoundError(`Blog: ${id} doesn't exist!`);
     return report;
 }
