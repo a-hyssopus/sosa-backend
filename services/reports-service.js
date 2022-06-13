@@ -15,13 +15,13 @@ exports.saveReport = async function (reportDTO) {
 
 exports.getReport = async function (id) {
     let report = await ReportModel.findById(id).lean();
-    if (!report) throw new EntityNotFoundError(`Blog: ${id} doesn't exist!`);
+    if (!report) throw new EntityNotFoundError(`Report: ${id} doesn't exist!`);
     return report;
 }
 
 exports.updateReport = async function (id, updatedFields) {
     let updatedReport = await ReportModel.findOneAndUpdate({_id: id}, updatedFields);
-    if (!updatedReport) throw new EntityNotFoundError(`Blog: ${id} doesn't exist!`);
+    if (!updatedReport) throw new EntityNotFoundError(`Report: ${id} doesn't exist!`);
     return updatedReport;
 }
 
