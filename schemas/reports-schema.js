@@ -13,6 +13,7 @@ const Report = new Schema({
     sterilized: {type: Object, trim: true},
     images: {type: Array},
     period: {type: Array},
+    money: Number,
     en: ReportLanguageField,
     ro: ReportLanguageField,
     ru: ReportLanguageField,
